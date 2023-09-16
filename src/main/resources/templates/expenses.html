@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+</head>
+<body>
+<h1>Expense Tracker</h1>
+
+<h2>Expenses</h2>
+<ul>
+    <li th:each="expense : ${expenses}">
+        <span th:text="${expense.description}"></span> -
+        <span th:text="${expense.amount}"></span> INR
+    </li>
+</ul>
+
+<h2>Add Expense</h2>
+<form th:action="@{/api/expenses}" method="post">
+    <label>Description: <input type="text" name="description"></label><br>
+    <label>Amount: <input type="number" name="amount"></label><br>
+    <button type="submit">Add Expense</button>
+</form>
+</body>
+</html>
